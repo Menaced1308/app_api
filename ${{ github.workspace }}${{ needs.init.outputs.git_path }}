@@ -135,7 +135,7 @@ jobs:
 
       - name: Install dependencies & build
         env:
-          CYPRESS_INSTALL_BINARY: 0
+          CYPRESS_INSTALL_BINARY: 
           PUPPETEER_SKIP_DOWNLOAD: true
         run: |
           npm ci
@@ -156,7 +156,7 @@ jobs:
       - name: Commit amend
         if: ${{ contains(needs.init.outputs.arg1, 'amend') }}
         run: |
-          git add '${{ github.workspace }}${{ needs.init.outputs.git_path }}'
+          git add ''
           git commit --amend --no-edit --signoff
           # Remove any [skip ci] from the amended commit
           git commit --amend -m "$(git log -1 --format='%B' | sed '/\[skip ci\]/d')"
